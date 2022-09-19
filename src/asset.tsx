@@ -9,6 +9,7 @@ import Animated, {
   SensorType,
   useAnimatedSensor,
   useAnimatedStyle,
+  withSpring,
 } from "react-native-reanimated";
 
 const { width } = Dimensions.get("window");
@@ -49,8 +50,8 @@ function Asset({ source, layer, x, y, xInput, xOutput, zIndexOutput }: Props) {
     return {
       zIndex,
       transform: [
-        { translateX: translateX * x * DISTANCE },
-        { translateY: translateY * y * DISTANCE },
+        { translateX: withSpring(translateX * x * DISTANCE) },
+        { translateY: withSpring(translateY * y * DISTANCE) },
       ],
     };
   });
